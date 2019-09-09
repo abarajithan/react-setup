@@ -1,19 +1,39 @@
+import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import './styles/main.scss';
 
-window.changeDetails = () => {
-    let value = {
-        details : {}
+class Timer extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { seconds: 0 };
     }
-    document.getElementById('change-name').innerText = "Hello John";
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-    .then(response => response.json())
-    .then(json => {
-        value.details = {
-            ...json
-        }
-        console.log("Value:",value)
-    })
-
-}
+  
+    tick() {
+      this.setState(state => ({
+        seconds: state.seconds + 1
+      }));
+    }
+  
+    componentDidMount() {
+      this.interval = setInterval(() => this.tick(), 1000);
+    }
+  
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+  
+    render() {
+      return (
+        <div>
+          Seconds: {this.state.seconds}
+        </div>
+      );
+    }
+  }
+  
+  ReactDOM.render(
+    <Timer />,
+    document.getElementById('timer-example')
+  );
 
     
