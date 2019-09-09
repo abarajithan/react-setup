@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import './styles/main.scss';
+import style from './styles/app.module.scss';
 
 class Timer extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Timer extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className={style.red}>
           Seconds: {this.state.seconds}
         </div>
       );
