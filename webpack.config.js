@@ -33,7 +33,7 @@ const config = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[name]_[hash:base64:5]_[local]',
+              localIdentName: '[hash:base64:8]',
               camelCase: true,
               sourceMap: isDevelopment
             }
